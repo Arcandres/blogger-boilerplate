@@ -4,7 +4,10 @@
   "description": "A custom Blogger boilerplate to develop templates using PUG, SASS and ES6.",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "pug": "gulp pug",
+    "sass": "gulp sass",
+    "babel": "gulp babel"
   },
   "keywords": [
     "blogger",
