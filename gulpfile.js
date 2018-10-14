@@ -22,10 +22,29 @@ gulp.task('pug', () =>
     .pipe(gulp.dest(options.paths.html))
 )
 
+gulp.task('sass', () => 
+  gulp
+    .src(options.paths.sass)
+    .pipe(plumber())
+    .pipe(sass(options.sass))
+    .pipe(prefixer(options.prefixer))
+    .pipe(gulp.dest(options.paths.css))
+)
+
+gulp.task('babel', () => 
+  gulp
+    .src(options.paths.es6)
+    .pipe(plumber())
+    .pipe(concat('bundle.js'))
+    .pipe(babel(options.babel))
+    .pipe(uglify())
+    .pipe(gulp.dest(options.paths.js))
+)
+
 // Watchers
 gulp.task('default', () => {
   gulp.watch(options.paths.pug, ['pug'])
-  // gulp.watch(options.paths.sass, ['sass'])
-  // gulp.watch(options.paths.es6, ['babel'])
+  gulp.watch(options.paths.sass, ['sass'])
+  gulp.watch(options.paths.es6, ['babel'])
 })
 
