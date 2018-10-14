@@ -10,41 +10,61 @@ const gulp = require('gulp'),
   prefixer = require('gulp-autoprefixer'),
 
   // Config
-  options = require('./config/options')
+  options = {
+    babel: {
+      presets: ['env']
+    },
+    prefixer: {
+      versions: ['last 2 browsers']
+    },
+    pug: {
+      pretty: false
+    },
+    sass: {
+      outputStyle: 'compressed'
+    },
+    paths: {
+      pug: `./src/pug/`,
+      sass: `./src/sass`,
+      es6: `./src/es6`,
+      html: `./dist/`,
+      css: `./dist/css`,
+      js: `./dist/js`
+    }
+  }
 
 // Tasks
-gulp.task('pug', () => 
+gulp.task('pug', () =>
   gulp
-    .src(options.paths.pug) // Only compile the index
-    .pipe(plumber())
-    .pipe(pug(options.pug))
-    .pipe(rename('template.xml'))
-    .pipe(gulp.dest(options.paths.html))
+  .src(`${options.paths.pug}/index.pug`) // Only compile index
+  .pipe(plumber())
+  .pipe(pug(options.pug))
+  .pipe(rename('template.xml'))
+  .pipe(gulp.dest(options.paths.html))
 )
 
-gulp.task('sass', () => 
+gulp.task('sass', () =>
   gulp
-    .src(options.paths.sass)
-    .pipe(plumber())
-    .pipe(sass(options.sass))
-    .pipe(prefixer(options.prefixer))
-    .pipe(gulp.dest(options.paths.css))
+  .src(options.paths.sass)
+  .pipe(plumber())
+  .pipe(sass(options.sass))
+  .pipe(prefixer(options.prefixer))
+  .pipe(gulp.dest(options.paths.css))
 )
 
-gulp.task('babel', () => 
+gulp.task('babel', () =>
   gulp
-    .src(options.paths.es6)
-    .pipe(plumber())
-    .pipe(concat('bundle.js'))
-    .pipe(babel(options.babel))
-    .pipe(uglify())
-    .pipe(gulp.dest(options.paths.js))
+  .src(options.paths.es6)
+  .pipe(plumber())
+  .pipe(concat('bundle.js'))
+  .pipe(babel(options.babel))
+  .pipe(uglify())
+  .pipe(gulp.dest(options.paths.js))
 )
 
 // Watchers
 gulp.task('default', () => {
-  gulp.watch(options.paths.pug, ['pug'])
+  gulp.watch(`${options.paths.pug}/**/*.pug`, ['pug'])
   gulp.watch(options.paths.sass, ['sass'])
   gulp.watch(options.paths.es6, ['babel'])
 })
-
