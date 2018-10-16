@@ -1,0 +1,61 @@
+meta(expr:charset='data:blog.encoding')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+link(expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon')
+
+//- Titulo
+b:with(value='data:view.isError ? data:messages.theresNothingHere : (data:view.isLabelSearch ? data:view.search.label : data:view.title.escaped)' var='title')
+  meta(expr:content='data:title' property='og:title')
+  meta(expr:content='data:title' name='twitter:title')
+  title
+    data:title/
+
+//- Basic Data
+meta(expr:charset='data:blog.encoding')
+meta(content='blogger' name='generator')
+meta(content='summary_large_image' name='twitter:card')
+meta(expr:content='data:blog.adultContent ? "mature" : "general"' name='rating')
+meta(expr:content='data:view.isMultipleItems ? "website" : "article"' property='og:type')
+
+//- Url canonical
+
+meta(expr:content='data:view.url.canonical' property='og:url')
+meta(expr:content='data:view.url.canonical' name='twitter:url')
+link(expr:href='data:view.url.canonical' rel='canonical')
+
+//- Description
+meta(expr:content='data:view.description.escaped' property='og:description')
+meta(expr:content='data:view.description.escaped' name='twitter:description')
+meta(expr:content='data:view.description.escaped' name='description')
+u
+//- Meta Robots
+b:with(value='data:view.isHomepage or data:view.isSingleItem ? "index,follow" : "noindex,nofollow"' var='robots')
+  meta(expr:content='data:robots' name='robots')
+
+//- Featured Image
+b:if(cond='data:view.featuredImage')
+  link(expr:href='data:view.featuredImage' rel='image_src')
+  meta(expr:content='data:view.featuredImage' name='twitter:image')
+  meta(expr:content='data:view.featuredImage' property='og:image')
+
+//- Feeds
+b:if(cond='data:blog.feedLinks')
+  link(expr:href='data:blog.homepageUrl.canonical path "feeds/posts/default"' title='Atom 1.0' rel='alternate' type='application/atom+xml')
+  link(expr:href='data:blog.homepageUrl.canonical path "feeds/posts/default" params {alt: "rss"}' title='RSS 2.0' rel='alternate' type='application/rss+xml')
+
+style
+  //- include ../../assets/css/styles.css
+
+//- <b:if cond='data:view.isHomepage or data:view.isError'>
+//-   style
+//-     include ../../assets/css/main.css
+//- <b:elseif cond='data:view.isSearch or data:view.isLabelSearch'/>
+//-   style
+//-     include ../../assets/css/blog.css
+//- <b:elseif cond='data:blog.pageName == "Contacto"'/>
+//-   style
+//-     include ../../assets/css/contact.css
+//- <b:elseif cond='data:view.isPost or data:view.isPage'/>
+//-   style
+//-     include ../../assets/css/post.css
+//-   include ../../assets/css/new-comments.css
+//- </b:if>
