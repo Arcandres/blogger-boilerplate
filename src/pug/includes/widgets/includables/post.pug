@@ -1,0 +1,13 @@
+b:includable#post(var='post')
+
+  b:if(cond='data:view.isMultipleItems')
+
+    //- Home Page
+
+    <b:elseif cond='data:view.isPost'/>
+
+    //- Posts
+
+    <b:elseif cond='data:view.isPage'/>
+
+    //- Static page
