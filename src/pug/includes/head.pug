@@ -13,7 +13,7 @@ b:with(value='data:view.isError ? data:messages.theresNothingHere : (data:view.i
 meta(expr:charset='data:blog.encoding')
 meta(content='blogger' name='generator')
 meta(content='summary_large_image' name='twitter:card')
-meta(expr:content='data:blog.adultContent ? "mature" : "general"' name='rating')
+meta(expr:content='data:blog.adultContent ? \"mature\" : "general"' name='rating')
 meta(expr:content='data:view.isMultipleItems ? "website" : "article"' property='og:type')
 
 //- Url canonical
@@ -42,20 +42,15 @@ b:if(cond='data:blog.feedLinks')
   link(expr:href='data:blog.homepageUrl.canonical path "feeds/posts/default"' title='Atom 1.0' rel='alternate' type='application/atom+xml')
   link(expr:href='data:blog.homepageUrl.canonical path "feeds/posts/default" params {alt: "rss"}' title='RSS 2.0' rel='alternate' type='application/rss+xml')
 
-style
-  //- include ../../assets/css/styles.css
-
-//- <b:if cond='data:view.isHomepage or data:view.isError'>
-//-   style
-//-     include ../../assets/css/main.css
-//- <b:elseif cond='data:view.isSearch or data:view.isLabelSearch'/>
-//-   style
-//-     include ../../assets/css/blog.css
-//- <b:elseif cond='data:blog.pageName == "Contacto"'/>
-//-   style
-//-     include ../../assets/css/contact.css
-//- <b:elseif cond='data:view.isPost or data:view.isPage'/>
-//-   style
-//-     include ../../assets/css/post.css
-//-   include ../../assets/css/new-comments.css
-//- </b:if>
+//- Sitelinks Searchbox
+script(type='application/ld+json').
+  {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "<data:blog.homepageUrl.canonical/>",
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "<data:blog.searchUrl/>?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+      }
+  }
