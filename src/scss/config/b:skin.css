@@ -1,0 +1,52 @@
+<![CDATA[
+  /*!
+  => Theme Name: {{ NAME }}
+  => Theme URI: {{ URL }}
+  => Author: {{ AUTHOR NAME }}
+  => Author URI: {{ AUTHOR URL }}
+  => Version: {{ THE VERSION }}
+  => License: Creative Commons Atribucion-NoComercial 4.0 Internacional
+  => License URI: http://creativecommons.org/licenses/by-nc/4.0/
+  */
+  /*Fix: Unnecessary elements removed*/
+  .widget-item-control,
+  .item-control.blog-admin,
+  .continue,.loadmore,
+  .thread-chrome.thread-collapsed,
+  .singleton-element:not(.cookie-choices-info),
+  .noAllowNewComments .comment-actions {display:none}
+  /*Fix: Show lightbox*/
+  .CSS_LIGHTBOX{z-index:90001!important}
+  /*Fix: Image responsive*/
+  a[imageanchor]:not([style*=float]) {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  img[data-original-height],
+  img[data-original-width] {height: auto;}
+  /*Fix: Comment Editor*/
+  #comment-editor{
+    border:0;
+    width:100%;
+    min-height:220px
+  }
+  /*Fix: Responsive Comments*/
+  .fb-comments,
+  .fb-comments span,
+  .fb-comments iframe,
+  .cmt_iframe_holder,
+  .cmt_iframe_holder iframe {
+    width:100%!important;
+    display:block!important
+  }
+  /* Configurations
+    ====================
+    <!-- General Options -->
+    <Variable name="config.comments" description="Comment system" type="string" default="blogger" value="blogger"/>
+
+    <!-- Options for Comments -->
+    <Variable name="config.dq.shortname" description="Short name of Disqus" type="string" default="shortname" value="shortname"/>
+    <Variable name="config.fb.commentNums" description="Initial number of comments" type="string" default="10" value="10"/>
+    <Variable name="config.fb.commentSkin" description="Theme color" type="string" default="light" value="light"/>
+  */
+]]>
