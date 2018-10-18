@@ -1,0 +1,14 @@
+//- Main
+style
+  include ../assets/css/styles.css
+
+//- Styles for post view only
+b:if(cond='data:view.isPost')
+  include ../assets/css/modules/post.css
+
+//- Blogger styles
+b:skin
+  include ../../scss/config/b:skin.css
+
+b:template-skin
+  include ../../scss/config/blogger-layout.css

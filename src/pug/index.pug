@@ -1,6 +1,17 @@
 doctype xml
 doctype html
-html(b:css='false' b:js='false' b:responsive='true' b:version='2' expr:dir='data:blog.locale.languageDirection' expr:lang='data:blog.locale.language' prefix='og: http://ogp.me/ns#')
+
+html(
+  b:css='false' b:js='false' b:responsive='true'
+  b:version='2' expr:dir='data:blog.locale.languageDirection'
+  expr:lang='data:blog.locale.language' prefix='og: http://ogp.me/ns#'
+)
 
   head
-    include modules/head
+    include includes/head
+    //- General Styles
+    include includes/styles
+  |&lt;!--</head>--&gt;&lt;/head&gt;
+
+  body
+    include includes/widgets/blog

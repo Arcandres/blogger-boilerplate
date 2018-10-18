@@ -1,0 +1,12 @@
+b:includable#main(var='top')
+   <!-- Basic structure of example. You can delete from here {{ -->
+   <b:if cond='data:view.isMultipleItems'>
+      b:loop(values='data:posts' var='post')
+         b:include(data='post' name='post')/ <!-- Include posts -->
+      b:include(name='nextprev')/ <!-- Include pagination -->
+   <b:else/>
+      b:loop(values='data:posts' var='post')
+         b:include(data='post' name='post')/ <!-- Include posts -->
+         b:include(data='post' name='comments')/ <!-- Include comments -->
+   </b:if>
+   <!-- }} Up to this point -->
