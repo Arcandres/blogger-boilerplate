@@ -18,18 +18,18 @@ const gulp = require('gulp'),
       versions: ['last 2 browsers']
     },
     pug: {
-      pretty: false
+      pretty: true
     },
     sass: {
       outputStyle: 'compressed'
     },
     paths: {
       pug: `./src/pug/`,
-      sass: `./src/sass`,
+      sass: `./src/scss`,
       es6: `./src/es6`,
-      html: `./dist/`,
-      css: `./dist/css`,
-      js: `./dist/js`
+      css: `./src/pug/assets/css`,
+      js: `./src/pug/assets/js`,
+      html: `./dist/`
     }
   }
 
@@ -45,7 +45,7 @@ gulp.task('pug', () =>
 
 gulp.task('sass', () =>
   gulp
-  .src(options.paths.sass)
+  .src(`${options.paths.sass}/**/*.scss`)
   .pipe(plumber())
   .pipe(sass(options.sass))
   .pipe(prefixer(options.prefixer))
@@ -65,6 +65,6 @@ gulp.task('babel', () =>
 // Watchers
 gulp.task('default', () => {
   gulp.watch(`${options.paths.pug}/**/*.pug`, ['pug'])
-  gulp.watch(options.paths.sass, ['sass'])
-  gulp.watch(options.paths.es6, ['babel'])
+  gulp.watch(`${options.paths.sass}/**/*.scss`, ['sass'])
+  gulp.watch(`${options.paths.es6}/**/*.js`, ['babel'])
 })
