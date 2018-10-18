@@ -1,3 +1,4 @@
+//- Blogger
 b:includable#comments-blogger(var='post')
   b:if(cond='data:post.commentSource == 1')
     b:include(data='post' name='iframe_comments')/
@@ -5,8 +6,9 @@ b:includable#comments-blogger(var='post')
     b:include(data='post' name='comment_picker')/
   </b:if>
 
+//- Disqus
 b:includable#comments-disqus(var='post')
-  div#disqus_thread/
+  #disqus_thread
   script.
     var disqus_shortname = "<data:skin.vars.config_dq_shortname/>",
       disqus_config = function(){
@@ -22,3 +24,24 @@ b:includable#comments-disqus(var='post')
         (d.head || d.body).appendChild(s);
       })();
     //]]>
+
+//- Facebook
+b:includable#comments-facebook(var='post')
+  .fb-comments(expr:data-colorscheme='data:skin.vars.config_fb_commentSkin' expr:data-href='data:view.url.canonical' expr:data-numposts='data:skin.vars.config_fb_commentNums')
+
+b:includable#comment_picker(var='post')
+  #comments.comments
+    b:class(cond='!data:post.allowNewComments' name='noAllowNewComments')/
+    .comments-content
+      #comment-holder
+        data:post.commentHtml/
+      b:include(data='post' name='threaded_comment_js')/
+    b:include(data='post' expr:name='data:post.allowNewComments ? "threaded-comment-form" : "status-message"')/
+
+b:includable#comments(var='post')
+  b:if(cond='data:post.allowComments')
+    b:include(data='post' expr:name='data:view.isPreview ? "status-message" : "comments-" + data:skin.vars.config_comments')/
+
+b:includable#iframe_comments(var='post')
+  script(expr:src='data:post.iframeCommentSrc')/
+  .cmt_iframe_holder(expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType')
