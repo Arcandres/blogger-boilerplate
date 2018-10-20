@@ -1,6 +1,6 @@
 b:includable#post(var='post')
 
-  b:if(cond='data:view.isMultipleItems')
+  <b:if cond='data:view.isMultipleItems'>
 
     //- Home Page
 
@@ -11,3 +11,5 @@ b:includable#post(var='post')
     <b:elseif cond='data:view.isPage'/>
 
     //- Static page
+  
+  </b:if>
