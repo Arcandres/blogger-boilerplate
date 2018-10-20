@@ -2,9 +2,8 @@
 b:includable#comments-blogger(var='post')
   b:if(cond='data:post.commentSource == 1')
     b:include(data='post' name='iframe_comments')/
-  <b:else/>
+    b:else/
     b:include(data='post' name='comment_picker')/
-  </b:if>
 
 //- Disqus
 b:includable#comments-disqus(var='post')
