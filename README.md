@@ -13,7 +13,7 @@ pnpm install
 # What can you do?
 Using this boilerplate allows you to use custom **pug** and **sass** modules.
 
-![alt text](/docs/folder-structure.png "Folder Structure")
+![alt text](./docs/folder-structure.png "Folder Structure")
 
 This way you can create scalable templates with the benefits of these 2 lenguages.
 
