@@ -54,7 +54,7 @@ gulp.task('sass', () =>
 
 gulp.task('babel', () =>
   gulp
-  .src(options.paths.es6)
+  .src(`${options.paths.es6}/index.js`)
   .pipe(plumber())
   .pipe(concat('bundle.js'))
   .pipe(babel(options.babel))
