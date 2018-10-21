@@ -24,7 +24,7 @@ gulp || npm start
 ```
 You can compile just the template.
 ```sh
-npm run gulp
+npm run pug
 ```
 Styles: `npm run sass`
 
