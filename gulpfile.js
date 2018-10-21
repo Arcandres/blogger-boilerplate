@@ -18,7 +18,7 @@ const gulp = require('gulp'),
       versions: ['last 2 browsers']
     },
     pug: {
-      pretty: true
+      pretty: false
     },
     sass: {
       outputStyle: 'compressed'
