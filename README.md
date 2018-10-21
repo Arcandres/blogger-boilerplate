@@ -15,7 +15,7 @@ Using this boilerplate allows you to use custom **pug** and **sass** modules.
 
 ![alt text](./docs/folder-structure.png "Folder Structure")
 
-This way you can create scalable templates with the benefits of these 2 lenguages.
+This way you can create scalable templates with the benefits of these 2 languages.
 
 ## Compile
 Just run the following.
@@ -26,11 +26,6 @@ You can compile just the template.
 ```sh
 npm run gulp
 ```
-Styles
-```sh
-npm run sass
-```
-or JavaScript
-```sh
-npm run babel
-```
+Styles: `npm run sass`
+
+JavaScript: `npm run babel`
