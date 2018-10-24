@@ -12,7 +12,7 @@ const gulp = require('gulp'),
   // Config
   options = {
     babel: {
-      presets: ['env']
+      presets: ['@babel/env']
     },
     prefixer: {
       versions: ['last 2 browsers']
@@ -54,9 +54,9 @@ gulp.task('sass', () =>
 
 gulp.task('babel', () =>
   gulp
-  .src(`${options.paths.es6}/index.js`)
+  .src(`${options.paths.es6}/**/*.js`)
   .pipe(plumber())
-  .pipe(concat('bundle.js'))
+  .pipe(concat('main.js'))
   .pipe(babel(options.babel))
   .pipe(uglify())
   .pipe(gulp.dest(options.paths.js))
