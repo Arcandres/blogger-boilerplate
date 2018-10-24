@@ -31,7 +31,6 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.1"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Arcandres/blogger-boilerplate.git"
