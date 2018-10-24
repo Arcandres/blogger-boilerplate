@@ -4,9 +4,9 @@ const gulp = require('gulp'),
   sass = require('gulp-sass'),
   babel = require('gulp-babel'),
   concat = require('gulp-concat'),
-  plumber = require('gulp-plumber'),
   uglify = require('gulp-uglify'),
   rename = require("gulp-rename"),
+  plumber = require('gulp-plumber'),
   prefixer = require('gulp-autoprefixer'),
 
   // Config
